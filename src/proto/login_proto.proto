@@ -1,0 +1,43 @@
+package net.nyhm.protonet.example.proto;
+
+import "account_proto.proto";
+
+message LoginRequest
+{
+    optional string email = 1;
+    optional string pass = 2;
+}
+
+message LoginResponse
+{
+    enum Decision
+    {
+        ACCEPTED = 1; // login is accepted, account will be included
+        DECLINED = 2; // login is declined, see message
+        REGISTER = 3; // unknown user must create a new account
+    }
+
+    optional Decision decision = 1;
+    optional string message = 2;
+    optional Account account = 3;
+}
+
+message RegisterRequest
+{
+    optional string email = 1;
+    optional string pass = 2;
+    optional string name = 3;
+}
+
+message RegisterResponse
+{
+    enum Decision
+    {
+        ACCEPTED = 1; // registration is accepted (user is logged in)
+        DECLINED = 2; // registration is declined, see message
+    }
+
+    optional Decision decision = 1;
+    optional string message = 2;
+    optional Account account = 3;
+}

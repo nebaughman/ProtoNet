@@ -1,0 +1,8 @@
+package net.nyhm.protonet.example.proto;
+
+message Account
+{
+    optional int32 id = 1;
+    optional string email = 2;
+    optional string name = 3;
+}
