@@ -1,3 +1,5 @@
+syntax = "proto2";
+
 package net.nyhm.protonet.example.proto;
 
 message Account

@@ -6,7 +6,13 @@ package net.nyhm.protonet.example.proto;
 public final class LoginProto {
   private LoginProto() {}
   public static void registerAllExtensions(
+      com.google.protobuf.ExtensionRegistryLite registry) {
+  }
+
+  public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
+    registerAllExtensions(
+        (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   public interface LoginRequestOrBuilder extends
       // @@protoc_insertion_point(interface_extends:net.nyhm.protonet.example.proto.LoginRequest)
@@ -43,37 +49,33 @@ public final class LoginProto {
   /**
    * Protobuf type {@code net.nyhm.protonet.example.proto.LoginRequest}
    */
-  public static final class LoginRequest extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class LoginRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:net.nyhm.protonet.example.proto.LoginRequest)
       LoginRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use LoginRequest.newBuilder() to construct.
-    private LoginRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private LoginRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private LoginRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final LoginRequest defaultInstance;
-    public static LoginRequest getDefaultInstance() {
-      return defaultInstance;
+    private LoginRequest() {
+      email_ = "";
+      pass_ = "";
     }
 
-    public LoginRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private LoginRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -86,8 +88,8 @@ public final class LoginProto {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -110,7 +112,7 @@ public final class LoginProto {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -121,31 +123,16 @@ public final class LoginProto {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               net.nyhm.protonet.example.proto.LoginProto.LoginRequest.class, net.nyhm.protonet.example.proto.LoginProto.LoginRequest.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<LoginRequest> PARSER =
-        new com.google.protobuf.AbstractParser<LoginRequest>() {
-      public LoginRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LoginRequest(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LoginRequest> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int EMAIL_FIELD_NUMBER = 1;
-    private java.lang.Object email_;
+    private volatile java.lang.Object email_;
     /**
      * <code>optional string email = 1;</code>
      */
@@ -187,7 +174,7 @@ public final class LoginProto {
     }
 
     public static final int PASS_FIELD_NUMBER = 2;
-    private java.lang.Object pass_;
+    private volatile java.lang.Object pass_;
     /**
      * <code>optional string pass = 2;</code>
      */
@@ -228,10 +215,6 @@ public final class LoginProto {
       }
     }
 
-    private void initFields() {
-      email_ = "";
-      pass_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -244,42 +227,87 @@ public final class LoginProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getEmailBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getPassBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, pass_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getEmailBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getPassBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, pass_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.nyhm.protonet.example.proto.LoginProto.LoginRequest)) {
+        return super.equals(obj);
+      }
+      net.nyhm.protonet.example.proto.LoginProto.LoginRequest other = (net.nyhm.protonet.example.proto.LoginProto.LoginRequest) obj;
+
+      boolean result = true;
+      result = result && (hasEmail() == other.hasEmail());
+      if (hasEmail()) {
+        result = result && getEmail()
+            .equals(other.getEmail());
+      }
+      result = result && (hasPass() == other.hasPass());
+      if (hasPass()) {
+        result = result && getPass()
+            .equals(other.getPass());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEmail()) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+      }
+      if (hasPass()) {
+        hash = (37 * hash) + PASS_FIELD_NUMBER;
+        hash = (53 * hash) + getPass().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -303,46 +331,57 @@ public final class LoginProto {
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.LoginRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.LoginRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -350,7 +389,7 @@ public final class LoginProto {
      * Protobuf type {@code net.nyhm.protonet.example.proto.LoginRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:net.nyhm.protonet.example.proto.LoginRequest)
         net.nyhm.protonet.example.proto.LoginProto.LoginRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -358,7 +397,7 @@ public final class LoginProto {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -371,18 +410,15 @@ public final class LoginProto {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         email_ = "";
@@ -390,10 +426,6 @@ public final class LoginProto {
         pass_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -430,6 +462,32 @@ public final class LoginProto {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.nyhm.protonet.example.proto.LoginProto.LoginRequest) {
           return mergeFrom((net.nyhm.protonet.example.proto.LoginProto.LoginRequest)other);
@@ -451,7 +509,8 @@ public final class LoginProto {
           pass_ = other.pass_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -468,7 +527,7 @@ public final class LoginProto {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (net.nyhm.protonet.example.proto.LoginProto.LoginRequest) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -629,16 +688,53 @@ public final class LoginProto {
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:net.nyhm.protonet.example.proto.LoginRequest)
     }
 
+    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.LoginRequest)
+    private static final net.nyhm.protonet.example.proto.LoginProto.LoginRequest DEFAULT_INSTANCE;
     static {
-      defaultInstance = new LoginRequest(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new net.nyhm.protonet.example.proto.LoginProto.LoginRequest();
     }
 
-    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.LoginRequest)
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginRequest>
+        PARSER = new com.google.protobuf.AbstractParser<LoginRequest>() {
+      public LoginRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LoginRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoginRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.nyhm.protonet.example.proto.LoginProto.LoginRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface LoginResponseOrBuilder extends
@@ -684,37 +780,33 @@ public final class LoginProto {
   /**
    * Protobuf type {@code net.nyhm.protonet.example.proto.LoginResponse}
    */
-  public static final class LoginResponse extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class LoginResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:net.nyhm.protonet.example.proto.LoginResponse)
       LoginResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use LoginResponse.newBuilder() to construct.
-    private LoginResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private LoginResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private LoginResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final LoginResponse defaultInstance;
-    public static LoginResponse getDefaultInstance() {
-      return defaultInstance;
+    private LoginResponse() {
+      decision_ = 1;
+      message_ = "";
     }
 
-    public LoginResponse getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private LoginResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -727,8 +819,8 @@ public final class LoginProto {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -740,7 +832,7 @@ public final class LoginProto {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
                 bitField0_ |= 0x00000001;
-                decision_ = value;
+                decision_ = rawValue;
               }
               break;
             }
@@ -769,7 +861,7 @@ public final class LoginProto {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -780,26 +872,11 @@ public final class LoginProto {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               net.nyhm.protonet.example.proto.LoginProto.LoginResponse.class, net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<LoginResponse> PARSER =
-        new com.google.protobuf.AbstractParser<LoginResponse>() {
-      public LoginResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new LoginResponse(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<LoginResponse> getParserForType() {
-      return PARSER;
     }
 
     /**
@@ -808,60 +885,70 @@ public final class LoginProto {
     public enum Decision
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>ACCEPTED = 1;</code>
-       *
        * <pre>
        * login is accepted, account will be included
        * </pre>
-       */
-      ACCEPTED(0, 1),
-      /**
-       * <code>DECLINED = 2;</code>
        *
+       * <code>ACCEPTED = 1;</code>
+       */
+      ACCEPTED(1),
+      /**
        * <pre>
        * login is declined, see message
        * </pre>
-       */
-      DECLINED(1, 2),
-      /**
-       * <code>REGISTER = 3;</code>
        *
+       * <code>DECLINED = 2;</code>
+       */
+      DECLINED(2),
+      /**
        * <pre>
        * unknown user must create a new account
        * </pre>
+       *
+       * <code>REGISTER = 3;</code>
        */
-      REGISTER(2, 3),
+      REGISTER(3),
       ;
 
       /**
-       * <code>ACCEPTED = 1;</code>
-       *
        * <pre>
        * login is accepted, account will be included
        * </pre>
+       *
+       * <code>ACCEPTED = 1;</code>
        */
       public static final int ACCEPTED_VALUE = 1;
       /**
-       * <code>DECLINED = 2;</code>
-       *
        * <pre>
        * login is declined, see message
        * </pre>
+       *
+       * <code>DECLINED = 2;</code>
        */
       public static final int DECLINED_VALUE = 2;
       /**
-       * <code>REGISTER = 3;</code>
-       *
        * <pre>
        * unknown user must create a new account
        * </pre>
+       *
+       * <code>REGISTER = 3;</code>
        */
       public static final int REGISTER_VALUE = 3;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static Decision valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Decision forNumber(int value) {
         switch (value) {
           case 1: return ACCEPTED;
           case 2: return DECLINED;
@@ -874,17 +961,17 @@ public final class LoginProto {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Decision>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Decision> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Decision>() {
               public Decision findValueByNumber(int number) {
-                return Decision.valueOf(number);
+                return Decision.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -906,11 +993,9 @@ public final class LoginProto {
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private Decision(int index, int value) {
-        this.index = index;
+      private Decision(int value) {
         this.value = value;
       }
 
@@ -919,7 +1004,7 @@ public final class LoginProto {
 
     private int bitField0_;
     public static final int DECISION_FIELD_NUMBER = 1;
-    private net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision decision_;
+    private int decision_;
     /**
      * <code>optional .net.nyhm.protonet.example.proto.LoginResponse.Decision decision = 1;</code>
      */
@@ -930,11 +1015,12 @@ public final class LoginProto {
      * <code>optional .net.nyhm.protonet.example.proto.LoginResponse.Decision decision = 1;</code>
      */
     public net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision getDecision() {
-      return decision_;
+      net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision result = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.valueOf(decision_);
+      return result == null ? net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED : result;
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 2;
-    private java.lang.Object message_;
+    private volatile java.lang.Object message_;
     /**
      * <code>optional string message = 2;</code>
      */
@@ -987,20 +1073,15 @@ public final class LoginProto {
      * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
      */
     public net.nyhm.protonet.example.proto.AccountProto.Account getAccount() {
-      return account_;
+      return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
     }
     /**
      * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
      */
     public net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder getAccountOrBuilder() {
-      return account_;
+      return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
     }
 
-    private void initFields() {
-      decision_ = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED;
-      message_ = "";
-      account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1013,49 +1094,103 @@ public final class LoginProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, decision_.getNumber());
+        output.writeEnum(1, decision_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getMessageBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, account_);
+        output.writeMessage(3, getAccount());
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, decision_.getNumber());
+          .computeEnumSize(1, decision_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getMessageBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, account_);
+          .computeMessageSize(3, getAccount());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.nyhm.protonet.example.proto.LoginProto.LoginResponse)) {
+        return super.equals(obj);
+      }
+      net.nyhm.protonet.example.proto.LoginProto.LoginResponse other = (net.nyhm.protonet.example.proto.LoginProto.LoginResponse) obj;
+
+      boolean result = true;
+      result = result && (hasDecision() == other.hasDecision());
+      if (hasDecision()) {
+        result = result && decision_ == other.decision_;
+      }
+      result = result && (hasMessage() == other.hasMessage());
+      if (hasMessage()) {
+        result = result && getMessage()
+            .equals(other.getMessage());
+      }
+      result = result && (hasAccount() == other.hasAccount());
+      if (hasAccount()) {
+        result = result && getAccount()
+            .equals(other.getAccount());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDecision()) {
+        hash = (37 * hash) + DECISION_FIELD_NUMBER;
+        hash = (53 * hash) + decision_;
+      }
+      if (hasMessage()) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessage().hashCode();
+      }
+      if (hasAccount()) {
+        hash = (37 * hash) + ACCOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getAccount().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1079,46 +1214,57 @@ public final class LoginProto {
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.LoginResponse prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.LoginResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1126,7 +1272,7 @@ public final class LoginProto {
      * Protobuf type {@code net.nyhm.protonet.example.proto.LoginResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:net.nyhm.protonet.example.proto.LoginResponse)
         net.nyhm.protonet.example.proto.LoginProto.LoginResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1134,7 +1280,7 @@ public final class LoginProto {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_LoginResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1147,36 +1293,29 @@ public final class LoginProto {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getAccountFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
-        decision_ = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED;
+        decision_ = 1;
         bitField0_ = (bitField0_ & ~0x00000001);
         message_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         if (accountBuilder_ == null) {
-          account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
+          account_ = null;
         } else {
           accountBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -1221,6 +1360,32 @@ public final class LoginProto {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.nyhm.protonet.example.proto.LoginProto.LoginResponse) {
           return mergeFrom((net.nyhm.protonet.example.proto.LoginProto.LoginResponse)other);
@@ -1243,7 +1408,8 @@ public final class LoginProto {
         if (other.hasAccount()) {
           mergeAccount(other.getAccount());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -1260,7 +1426,7 @@ public final class LoginProto {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (net.nyhm.protonet.example.proto.LoginProto.LoginResponse) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -1270,7 +1436,7 @@ public final class LoginProto {
       }
       private int bitField0_;
 
-      private net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision decision_ = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED;
+      private int decision_ = 1;
       /**
        * <code>optional .net.nyhm.protonet.example.proto.LoginResponse.Decision decision = 1;</code>
        */
@@ -1281,7 +1447,8 @@ public final class LoginProto {
        * <code>optional .net.nyhm.protonet.example.proto.LoginResponse.Decision decision = 1;</code>
        */
       public net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision getDecision() {
-        return decision_;
+        net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision result = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.valueOf(decision_);
+        return result == null ? net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED : result;
       }
       /**
        * <code>optional .net.nyhm.protonet.example.proto.LoginResponse.Decision decision = 1;</code>
@@ -1291,7 +1458,7 @@ public final class LoginProto {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000001;
-        decision_ = value;
+        decision_ = value.getNumber();
         onChanged();
         return this;
       }
@@ -1300,7 +1467,7 @@ public final class LoginProto {
        */
       public Builder clearDecision() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        decision_ = net.nyhm.protonet.example.proto.LoginProto.LoginResponse.Decision.ACCEPTED;
+        decision_ = 1;
         onChanged();
         return this;
       }
@@ -1381,8 +1548,8 @@ public final class LoginProto {
         return this;
       }
 
-      private net.nyhm.protonet.example.proto.AccountProto.Account account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
+      private net.nyhm.protonet.example.proto.AccountProto.Account account_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
           net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder> accountBuilder_;
       /**
        * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
@@ -1395,7 +1562,7 @@ public final class LoginProto {
        */
       public net.nyhm.protonet.example.proto.AccountProto.Account getAccount() {
         if (accountBuilder_ == null) {
-          return account_;
+          return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
         } else {
           return accountBuilder_.getMessage();
         }
@@ -1436,6 +1603,7 @@ public final class LoginProto {
       public Builder mergeAccount(net.nyhm.protonet.example.proto.AccountProto.Account value) {
         if (accountBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              account_ != null &&
               account_ != net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance()) {
             account_ =
               net.nyhm.protonet.example.proto.AccountProto.Account.newBuilder(account_).mergeFrom(value).buildPartial();
@@ -1454,7 +1622,7 @@ public final class LoginProto {
        */
       public Builder clearAccount() {
         if (accountBuilder_ == null) {
-          account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
+          account_ = null;
           onChanged();
         } else {
           accountBuilder_.clear();
@@ -1477,17 +1645,18 @@ public final class LoginProto {
         if (accountBuilder_ != null) {
           return accountBuilder_.getMessageOrBuilder();
         } else {
-          return account_;
+          return account_ == null ?
+              net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
         }
       }
       /**
        * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder> 
           getAccountFieldBuilder() {
         if (accountBuilder_ == null) {
-          accountBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          accountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder>(
                   getAccount(),
                   getParentForChildren(),
@@ -1496,16 +1665,53 @@ public final class LoginProto {
         }
         return accountBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:net.nyhm.protonet.example.proto.LoginResponse)
     }
 
+    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.LoginResponse)
+    private static final net.nyhm.protonet.example.proto.LoginProto.LoginResponse DEFAULT_INSTANCE;
     static {
-      defaultInstance = new LoginResponse(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new net.nyhm.protonet.example.proto.LoginProto.LoginResponse();
     }
 
-    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.LoginResponse)
+    public static net.nyhm.protonet.example.proto.LoginProto.LoginResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<LoginResponse>
+        PARSER = new com.google.protobuf.AbstractParser<LoginResponse>() {
+      public LoginResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new LoginResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<LoginResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<LoginResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public net.nyhm.protonet.example.proto.LoginProto.LoginResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface RegisterRequestOrBuilder extends
@@ -1557,37 +1763,34 @@ public final class LoginProto {
   /**
    * Protobuf type {@code net.nyhm.protonet.example.proto.RegisterRequest}
    */
-  public static final class RegisterRequest extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class RegisterRequest extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:net.nyhm.protonet.example.proto.RegisterRequest)
       RegisterRequestOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use RegisterRequest.newBuilder() to construct.
-    private RegisterRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RegisterRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private RegisterRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RegisterRequest defaultInstance;
-    public static RegisterRequest getDefaultInstance() {
-      return defaultInstance;
+    private RegisterRequest() {
+      email_ = "";
+      pass_ = "";
+      name_ = "";
     }
 
-    public RegisterRequest getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private RegisterRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -1600,8 +1803,8 @@ public final class LoginProto {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -1630,7 +1833,7 @@ public final class LoginProto {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -1641,31 +1844,16 @@ public final class LoginProto {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterRequest_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               net.nyhm.protonet.example.proto.LoginProto.RegisterRequest.class, net.nyhm.protonet.example.proto.LoginProto.RegisterRequest.Builder.class);
     }
 
-    public static com.google.protobuf.Parser<RegisterRequest> PARSER =
-        new com.google.protobuf.AbstractParser<RegisterRequest>() {
-      public RegisterRequest parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterRequest(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterRequest> getParserForType() {
-      return PARSER;
-    }
-
     private int bitField0_;
     public static final int EMAIL_FIELD_NUMBER = 1;
-    private java.lang.Object email_;
+    private volatile java.lang.Object email_;
     /**
      * <code>optional string email = 1;</code>
      */
@@ -1707,7 +1895,7 @@ public final class LoginProto {
     }
 
     public static final int PASS_FIELD_NUMBER = 2;
-    private java.lang.Object pass_;
+    private volatile java.lang.Object pass_;
     /**
      * <code>optional string pass = 2;</code>
      */
@@ -1749,7 +1937,7 @@ public final class LoginProto {
     }
 
     public static final int NAME_FIELD_NUMBER = 3;
-    private java.lang.Object name_;
+    private volatile java.lang.Object name_;
     /**
      * <code>optional string name = 3;</code>
      */
@@ -1790,11 +1978,6 @@ public final class LoginProto {
       }
     }
 
-    private void initFields() {
-      email_ = "";
-      pass_ = "";
-      name_ = "";
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -1807,49 +1990,102 @@ public final class LoginProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeBytes(1, getEmailBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, email_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getPassBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, pass_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeBytes(3, getNameBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, name_);
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(1, getEmailBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, email_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getPassBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, pass_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(3, getNameBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, name_);
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.nyhm.protonet.example.proto.LoginProto.RegisterRequest)) {
+        return super.equals(obj);
+      }
+      net.nyhm.protonet.example.proto.LoginProto.RegisterRequest other = (net.nyhm.protonet.example.proto.LoginProto.RegisterRequest) obj;
+
+      boolean result = true;
+      result = result && (hasEmail() == other.hasEmail());
+      if (hasEmail()) {
+        result = result && getEmail()
+            .equals(other.getEmail());
+      }
+      result = result && (hasPass() == other.hasPass());
+      if (hasPass()) {
+        result = result && getPass()
+            .equals(other.getPass());
+      }
+      result = result && (hasName() == other.hasName());
+      if (hasName()) {
+        result = result && getName()
+            .equals(other.getName());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEmail()) {
+        hash = (37 * hash) + EMAIL_FIELD_NUMBER;
+        hash = (53 * hash) + getEmail().hashCode();
+      }
+      if (hasPass()) {
+        hash = (37 * hash) + PASS_FIELD_NUMBER;
+        hash = (53 * hash) + getPass().hashCode();
+      }
+      if (hasName()) {
+        hash = (37 * hash) + NAME_FIELD_NUMBER;
+        hash = (53 * hash) + getName().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -1873,46 +2109,57 @@ public final class LoginProto {
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.RegisterRequest prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.RegisterRequest prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -1920,7 +2167,7 @@ public final class LoginProto {
      * Protobuf type {@code net.nyhm.protonet.example.proto.RegisterRequest}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:net.nyhm.protonet.example.proto.RegisterRequest)
         net.nyhm.protonet.example.proto.LoginProto.RegisterRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -1928,7 +2175,7 @@ public final class LoginProto {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterRequest_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -1941,18 +2188,15 @@ public final class LoginProto {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
         email_ = "";
@@ -1962,10 +2206,6 @@ public final class LoginProto {
         name_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2006,6 +2246,32 @@ public final class LoginProto {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.nyhm.protonet.example.proto.LoginProto.RegisterRequest) {
           return mergeFrom((net.nyhm.protonet.example.proto.LoginProto.RegisterRequest)other);
@@ -2032,7 +2298,8 @@ public final class LoginProto {
           name_ = other.name_;
           onChanged();
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -2049,7 +2316,7 @@ public final class LoginProto {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (net.nyhm.protonet.example.proto.LoginProto.RegisterRequest) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2286,16 +2553,53 @@ public final class LoginProto {
         onChanged();
         return this;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:net.nyhm.protonet.example.proto.RegisterRequest)
     }
 
+    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.RegisterRequest)
+    private static final net.nyhm.protonet.example.proto.LoginProto.RegisterRequest DEFAULT_INSTANCE;
     static {
-      defaultInstance = new RegisterRequest(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new net.nyhm.protonet.example.proto.LoginProto.RegisterRequest();
     }
 
-    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.RegisterRequest)
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterRequest getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<RegisterRequest>
+        PARSER = new com.google.protobuf.AbstractParser<RegisterRequest>() {
+      public RegisterRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RegisterRequest(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RegisterRequest> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RegisterRequest> getParserForType() {
+      return PARSER;
+    }
+
+    public net.nyhm.protonet.example.proto.LoginProto.RegisterRequest getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   public interface RegisterResponseOrBuilder extends
@@ -2341,37 +2645,33 @@ public final class LoginProto {
   /**
    * Protobuf type {@code net.nyhm.protonet.example.proto.RegisterResponse}
    */
-  public static final class RegisterResponse extends
-      com.google.protobuf.GeneratedMessage implements
+  public  static final class RegisterResponse extends
+      com.google.protobuf.GeneratedMessageV3 implements
       // @@protoc_insertion_point(message_implements:net.nyhm.protonet.example.proto.RegisterResponse)
       RegisterResponseOrBuilder {
+  private static final long serialVersionUID = 0L;
     // Use RegisterResponse.newBuilder() to construct.
-    private RegisterResponse(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    private RegisterResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
-      this.unknownFields = builder.getUnknownFields();
     }
-    private RegisterResponse(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final RegisterResponse defaultInstance;
-    public static RegisterResponse getDefaultInstance() {
-      return defaultInstance;
+    private RegisterResponse() {
+      decision_ = 1;
+      message_ = "";
     }
 
-    public RegisterResponse getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
     @java.lang.Override
     public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
+    getUnknownFields() {
       return this.unknownFields;
     }
     private RegisterResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
@@ -2384,8 +2684,8 @@ public final class LoginProto {
               done = true;
               break;
             default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
                 done = true;
               }
               break;
@@ -2397,7 +2697,7 @@ public final class LoginProto {
                 unknownFields.mergeVarintField(1, rawValue);
               } else {
                 bitField0_ |= 0x00000001;
-                decision_ = value;
+                decision_ = rawValue;
               }
               break;
             }
@@ -2426,7 +2726,7 @@ public final class LoginProto {
         throw e.setUnfinishedMessage(this);
       } catch (java.io.IOException e) {
         throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
+            e).setUnfinishedMessage(this);
       } finally {
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2437,26 +2737,11 @@ public final class LoginProto {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterResponse_descriptor;
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
       return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.class, net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Builder.class);
-    }
-
-    public static com.google.protobuf.Parser<RegisterResponse> PARSER =
-        new com.google.protobuf.AbstractParser<RegisterResponse>() {
-      public RegisterResponse parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new RegisterResponse(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<RegisterResponse> getParserForType() {
-      return PARSER;
     }
 
     /**
@@ -2465,44 +2750,54 @@ public final class LoginProto {
     public enum Decision
         implements com.google.protobuf.ProtocolMessageEnum {
       /**
-       * <code>ACCEPTED = 1;</code>
-       *
        * <pre>
        * registration is accepted (user is logged in)
        * </pre>
-       */
-      ACCEPTED(0, 1),
-      /**
-       * <code>DECLINED = 2;</code>
        *
+       * <code>ACCEPTED = 1;</code>
+       */
+      ACCEPTED(1),
+      /**
        * <pre>
        * registration is declined, see message
        * </pre>
+       *
+       * <code>DECLINED = 2;</code>
        */
-      DECLINED(1, 2),
+      DECLINED(2),
       ;
 
       /**
-       * <code>ACCEPTED = 1;</code>
-       *
        * <pre>
        * registration is accepted (user is logged in)
        * </pre>
+       *
+       * <code>ACCEPTED = 1;</code>
        */
       public static final int ACCEPTED_VALUE = 1;
       /**
-       * <code>DECLINED = 2;</code>
-       *
        * <pre>
        * registration is declined, see message
        * </pre>
+       *
+       * <code>DECLINED = 2;</code>
        */
       public static final int DECLINED_VALUE = 2;
 
 
-      public final int getNumber() { return value; }
+      public final int getNumber() {
+        return value;
+      }
 
+      /**
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
       public static Decision valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Decision forNumber(int value) {
         switch (value) {
           case 1: return ACCEPTED;
           case 2: return DECLINED;
@@ -2514,17 +2809,17 @@ public final class LoginProto {
           internalGetValueMap() {
         return internalValueMap;
       }
-      private static com.google.protobuf.Internal.EnumLiteMap<Decision>
-          internalValueMap =
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          Decision> internalValueMap =
             new com.google.protobuf.Internal.EnumLiteMap<Decision>() {
               public Decision findValueByNumber(int number) {
-                return Decision.valueOf(number);
+                return Decision.forNumber(number);
               }
             };
 
       public final com.google.protobuf.Descriptors.EnumValueDescriptor
           getValueDescriptor() {
-        return getDescriptor().getValues().get(index);
+        return getDescriptor().getValues().get(ordinal());
       }
       public final com.google.protobuf.Descriptors.EnumDescriptor
           getDescriptorForType() {
@@ -2546,11 +2841,9 @@ public final class LoginProto {
         return VALUES[desc.getIndex()];
       }
 
-      private final int index;
       private final int value;
 
-      private Decision(int index, int value) {
-        this.index = index;
+      private Decision(int value) {
         this.value = value;
       }
 
@@ -2559,7 +2852,7 @@ public final class LoginProto {
 
     private int bitField0_;
     public static final int DECISION_FIELD_NUMBER = 1;
-    private net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision decision_;
+    private int decision_;
     /**
      * <code>optional .net.nyhm.protonet.example.proto.RegisterResponse.Decision decision = 1;</code>
      */
@@ -2570,11 +2863,12 @@ public final class LoginProto {
      * <code>optional .net.nyhm.protonet.example.proto.RegisterResponse.Decision decision = 1;</code>
      */
     public net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision getDecision() {
-      return decision_;
+      net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision result = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.valueOf(decision_);
+      return result == null ? net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED : result;
     }
 
     public static final int MESSAGE_FIELD_NUMBER = 2;
-    private java.lang.Object message_;
+    private volatile java.lang.Object message_;
     /**
      * <code>optional string message = 2;</code>
      */
@@ -2627,20 +2921,15 @@ public final class LoginProto {
      * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
      */
     public net.nyhm.protonet.example.proto.AccountProto.Account getAccount() {
-      return account_;
+      return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
     }
     /**
      * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
      */
     public net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder getAccountOrBuilder() {
-      return account_;
+      return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
     }
 
-    private void initFields() {
-      decision_ = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED;
-      message_ = "";
-      account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
-    }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
@@ -2653,49 +2942,103 @@ public final class LoginProto {
 
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeEnum(1, decision_.getNumber());
+        output.writeEnum(1, decision_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getMessageBytes());
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, account_);
+        output.writeMessage(3, getAccount());
       }
-      getUnknownFields().writeTo(output);
+      unknownFields.writeTo(output);
     }
 
-    private int memoizedSerializedSize = -1;
     public int getSerializedSize() {
-      int size = memoizedSerializedSize;
+      int size = memoizedSize;
       if (size != -1) return size;
 
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(1, decision_.getNumber());
+          .computeEnumSize(1, decision_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getMessageBytes());
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, account_);
+          .computeMessageSize(3, getAccount());
       }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
       return size;
     }
 
-    private static final long serialVersionUID = 0L;
     @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof net.nyhm.protonet.example.proto.LoginProto.RegisterResponse)) {
+        return super.equals(obj);
+      }
+      net.nyhm.protonet.example.proto.LoginProto.RegisterResponse other = (net.nyhm.protonet.example.proto.LoginProto.RegisterResponse) obj;
+
+      boolean result = true;
+      result = result && (hasDecision() == other.hasDecision());
+      if (hasDecision()) {
+        result = result && decision_ == other.decision_;
+      }
+      result = result && (hasMessage() == other.hasMessage());
+      if (hasMessage()) {
+        result = result && getMessage()
+            .equals(other.getMessage());
+      }
+      result = result && (hasAccount() == other.hasAccount());
+      if (hasAccount()) {
+        result = result && getAccount()
+            .equals(other.getAccount());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
     }
 
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasDecision()) {
+        hash = (37 * hash) + DECISION_FIELD_NUMBER;
+        hash = (53 * hash) + decision_;
+      }
+      if (hasMessage()) {
+        hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+        hash = (53 * hash) + getMessage().hashCode();
+      }
+      if (hasAccount()) {
+        hash = (37 * hash) + ACCOUNT_FIELD_NUMBER;
+        hash = (53 * hash) + getAccount().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -2719,46 +3062,57 @@ public final class LoginProto {
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
-      return PARSER.parseFrom(input);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
     }
     public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.RegisterResponse prototype) {
-      return newBuilder().mergeFrom(prototype);
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
     }
-    public Builder toBuilder() { return newBuilder(this); }
+    public static Builder newBuilder(net.nyhm.protonet.example.proto.LoginProto.RegisterResponse prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
 
     @java.lang.Override
     protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       Builder builder = new Builder(parent);
       return builder;
     }
@@ -2766,7 +3120,7 @@ public final class LoginProto {
      * Protobuf type {@code net.nyhm.protonet.example.proto.RegisterResponse}
      */
     public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
         // @@protoc_insertion_point(builder_implements:net.nyhm.protonet.example.proto.RegisterResponse)
         net.nyhm.protonet.example.proto.LoginProto.RegisterResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -2774,7 +3128,7 @@ public final class LoginProto {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterResponse_descriptor;
       }
 
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
         return net.nyhm.protonet.example.proto.LoginProto.internal_static_net_nyhm_protonet_example_proto_RegisterResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
@@ -2787,36 +3141,29 @@ public final class LoginProto {
       }
 
       private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
         super(parent);
         maybeForceBuilderInitialization();
       }
       private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
           getAccountFieldBuilder();
         }
       }
-      private static Builder create() {
-        return new Builder();
-      }
-
       public Builder clear() {
         super.clear();
-        decision_ = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED;
+        decision_ = 1;
         bitField0_ = (bitField0_ & ~0x00000001);
         message_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         if (accountBuilder_ == null) {
-          account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
+          account_ = null;
         } else {
           accountBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
       }
 
       public com.google.protobuf.Descriptors.Descriptor
@@ -2861,6 +3208,32 @@ public final class LoginProto {
         return result;
       }
 
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
       public Builder mergeFrom(com.google.protobuf.Message other) {
         if (other instanceof net.nyhm.protonet.example.proto.LoginProto.RegisterResponse) {
           return mergeFrom((net.nyhm.protonet.example.proto.LoginProto.RegisterResponse)other);
@@ -2883,7 +3256,8 @@ public final class LoginProto {
         if (other.hasAccount()) {
           mergeAccount(other.getAccount());
         }
-        this.mergeUnknownFields(other.getUnknownFields());
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
         return this;
       }
 
@@ -2900,7 +3274,7 @@ public final class LoginProto {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
           parsedMessage = (net.nyhm.protonet.example.proto.LoginProto.RegisterResponse) e.getUnfinishedMessage();
-          throw e;
+          throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
@@ -2910,7 +3284,7 @@ public final class LoginProto {
       }
       private int bitField0_;
 
-      private net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision decision_ = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED;
+      private int decision_ = 1;
       /**
        * <code>optional .net.nyhm.protonet.example.proto.RegisterResponse.Decision decision = 1;</code>
        */
@@ -2921,7 +3295,8 @@ public final class LoginProto {
        * <code>optional .net.nyhm.protonet.example.proto.RegisterResponse.Decision decision = 1;</code>
        */
       public net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision getDecision() {
-        return decision_;
+        net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision result = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.valueOf(decision_);
+        return result == null ? net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED : result;
       }
       /**
        * <code>optional .net.nyhm.protonet.example.proto.RegisterResponse.Decision decision = 1;</code>
@@ -2931,7 +3306,7 @@ public final class LoginProto {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000001;
-        decision_ = value;
+        decision_ = value.getNumber();
         onChanged();
         return this;
       }
@@ -2940,7 +3315,7 @@ public final class LoginProto {
        */
       public Builder clearDecision() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        decision_ = net.nyhm.protonet.example.proto.LoginProto.RegisterResponse.Decision.ACCEPTED;
+        decision_ = 1;
         onChanged();
         return this;
       }
@@ -3021,8 +3396,8 @@ public final class LoginProto {
         return this;
       }
 
-      private net.nyhm.protonet.example.proto.AccountProto.Account account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
+      private net.nyhm.protonet.example.proto.AccountProto.Account account_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
           net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder> accountBuilder_;
       /**
        * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
@@ -3035,7 +3410,7 @@ public final class LoginProto {
        */
       public net.nyhm.protonet.example.proto.AccountProto.Account getAccount() {
         if (accountBuilder_ == null) {
-          return account_;
+          return account_ == null ? net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
         } else {
           return accountBuilder_.getMessage();
         }
@@ -3076,6 +3451,7 @@ public final class LoginProto {
       public Builder mergeAccount(net.nyhm.protonet.example.proto.AccountProto.Account value) {
         if (accountBuilder_ == null) {
           if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              account_ != null &&
               account_ != net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance()) {
             account_ =
               net.nyhm.protonet.example.proto.AccountProto.Account.newBuilder(account_).mergeFrom(value).buildPartial();
@@ -3094,7 +3470,7 @@ public final class LoginProto {
        */
       public Builder clearAccount() {
         if (accountBuilder_ == null) {
-          account_ = net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance();
+          account_ = null;
           onChanged();
         } else {
           accountBuilder_.clear();
@@ -3117,17 +3493,18 @@ public final class LoginProto {
         if (accountBuilder_ != null) {
           return accountBuilder_.getMessageOrBuilder();
         } else {
-          return account_;
+          return account_ == null ?
+              net.nyhm.protonet.example.proto.AccountProto.Account.getDefaultInstance() : account_;
         }
       }
       /**
        * <code>optional .net.nyhm.protonet.example.proto.Account account = 3;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      private com.google.protobuf.SingleFieldBuilderV3<
           net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder> 
           getAccountFieldBuilder() {
         if (accountBuilder_ == null) {
-          accountBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          accountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
               net.nyhm.protonet.example.proto.AccountProto.Account, net.nyhm.protonet.example.proto.AccountProto.Account.Builder, net.nyhm.protonet.example.proto.AccountProto.AccountOrBuilder>(
                   getAccount(),
                   getParentForChildren(),
@@ -3136,44 +3513,81 @@ public final class LoginProto {
         }
         return accountBuilder_;
       }
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
 
       // @@protoc_insertion_point(builder_scope:net.nyhm.protonet.example.proto.RegisterResponse)
     }
 
+    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.RegisterResponse)
+    private static final net.nyhm.protonet.example.proto.LoginProto.RegisterResponse DEFAULT_INSTANCE;
     static {
-      defaultInstance = new RegisterResponse(true);
-      defaultInstance.initFields();
+      DEFAULT_INSTANCE = new net.nyhm.protonet.example.proto.LoginProto.RegisterResponse();
     }
 
-    // @@protoc_insertion_point(class_scope:net.nyhm.protonet.example.proto.RegisterResponse)
+    public static net.nyhm.protonet.example.proto.LoginProto.RegisterResponse getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    @java.lang.Deprecated public static final com.google.protobuf.Parser<RegisterResponse>
+        PARSER = new com.google.protobuf.AbstractParser<RegisterResponse>() {
+      public RegisterResponse parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RegisterResponse(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<RegisterResponse> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RegisterResponse> getParserForType() {
+      return PARSER;
+    }
+
+    public net.nyhm.protonet.example.proto.LoginProto.RegisterResponse getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_net_nyhm_protonet_example_proto_LoginRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_net_nyhm_protonet_example_proto_LoginRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_net_nyhm_protonet_example_proto_LoginResponse_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_net_nyhm_protonet_example_proto_LoginResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_net_nyhm_protonet_example_proto_RegisterRequest_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_net_nyhm_protonet_example_proto_RegisterRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_net_nyhm_protonet_example_proto_RegisterResponse_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_net_nyhm_protonet_example_proto_RegisterResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
     return descriptor;
   }
-  private static com.google.protobuf.Descriptors.FileDescriptor
+  private static  com.google.protobuf.Descriptors.FileDescriptor
       descriptor;
   static {
     java.lang.String[] descriptorData = {
@@ -3186,7 +3600,7 @@ public final class LoginProto {
       "\003 \001(\0132(.net.nyhm.protonet.example.proto." +
       "Account\"4\n\010Decision\022\014\n\010ACCEPTED\020\001\022\014\n\010DEC" +
       "LINED\020\002\022\014\n\010REGISTER\020\003\"<\n\017RegisterRequest" +
-      "\022\r\n\005email\030\001 \001(\t\022\014\n\004pass\030\002 \001(\t\022\014\n\004name\030\003 ",
+      "\022\r\n\005email\030\001 \001(\t\022\014\n\004pass\030\002 \001(\t\022\014\n\004name\030\003 " +
       "\001(\t\"\324\001\n\020RegisterResponse\022L\n\010decision\030\001 \001" +
       "(\0162:.net.nyhm.protonet.example.proto.Reg" +
       "isterResponse.Decision\022\017\n\007message\030\002 \001(\t\022" +
@@ -3210,25 +3624,25 @@ public final class LoginProto {
     internal_static_net_nyhm_protonet_example_proto_LoginRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_net_nyhm_protonet_example_proto_LoginRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_net_nyhm_protonet_example_proto_LoginRequest_descriptor,
         new java.lang.String[] { "Email", "Pass", });
     internal_static_net_nyhm_protonet_example_proto_LoginResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_net_nyhm_protonet_example_proto_LoginResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_net_nyhm_protonet_example_proto_LoginResponse_descriptor,
         new java.lang.String[] { "Decision", "Message", "Account", });
     internal_static_net_nyhm_protonet_example_proto_RegisterRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_net_nyhm_protonet_example_proto_RegisterRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_net_nyhm_protonet_example_proto_RegisterRequest_descriptor,
         new java.lang.String[] { "Email", "Pass", "Name", });
     internal_static_net_nyhm_protonet_example_proto_RegisterResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_net_nyhm_protonet_example_proto_RegisterResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_net_nyhm_protonet_example_proto_RegisterResponse_descriptor,
         new java.lang.String[] { "Decision", "Message", "Account", });
     net.nyhm.protonet.example.proto.AccountProto.getDescriptor();
